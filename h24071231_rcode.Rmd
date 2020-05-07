@@ -1,0 +1,156 @@
+---
+title: "h24071231_rcode"
+output: html_document
+---
+
+
+## R Markdown
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r eval=FALSE}
+#打出符號
+$A = \pi*r^{2}$
+#雙錢字號置中
+$$B = 2 \pi r$$
+```
+$A = \pi*r^{2}$
+$$B = 2 \pi r$$
+```{r eval=FALSE}
+#打出表格
+Table Header | Second Header
+------------- | -------------
+Table Cell | Cell 2
+Cell 3 | Cell 4
+```
+
+Table Header | Second Header
+------------- | -------------
+Table Cell | Cell 2
+Cell 3 | Cell 4
+#打出矩陣
+```{r}
+A <- matrix(c(1:4), 2, 2)
+```
+#打出矩陣
+```{r eval=FALSE}
+$\left[
+\begin{array}{cc}
+A & B \\
+C & D \\
+\end{array}
+\right]$
+```
+$\left[
+\begin{array}{cc}
+A & B \\
+C & D \\
+\end{array}
+\right]$
+
+#相乘矩陣
+```{r}
+A <- matrix(c(1:4), 2, 2)
+B<- matrix(c(3:6), 2, 2)
+A %*% B
+```
+
+
+#矩陣inverse
+```{r}
+A <- matrix(c(1:4), 2, 2)
+solve(A)
+```
+
+#矩陣eigen
+
+```{r}
+A <- matrix(c(1:4), 2, 2)
+eigen(B)
+```
+
+#直方圖
+```{r}
+y <- 2 * 3 - 1
+hist(rnorm(100))
+```
+
+#長條圖
+```{r}
+x <- sample(c(1:8), 100, replace=TRUE, prob=c(8:1))
+x <- table(x)
+names(x) <- c("A", "B", "C", "D", "E", "F", "G", "H")
+barplot(x)
+```
+
+#繪圖變化
+```{r eval=FALSE}
+plot(x, y,
+  type = "p", ### types of the plot
+  pch = , ### the symbol in the plot
+  main = NULL, ### the title of the plot
+  lty = , ### the style of a line
+  lwd = , ### the width of a line
+  cex = , ### the size of an text
+  bty="o", ### the box around the plot
+  col = , ### the color of an object
+  xlim = NULL, ylim = NULL, # the range of an axis
+  sub = NULL, ### the sub-title of the plot
+  xlab = NULL, ylab = NULL, # the name of an axis
+  cex.main = ### the size of the title
+)
+```
+#function compute
+```{r}
+f <- function(x){
+  3*x + 2
+}
+f(2); f(3); f(4)
+```
+#return
+```{r}
+f <- function(x){
+  return(3*x + 2)
+}
+f(2)
+```
+#list: the name of the element and the location or the name of the element.
+```{r}
+X <- list(a = 3, b = c(1,2,3,4,5), c = c("A", "B"))
+X
+```
+#for loop
+```{r}
+vec.X.v1 <- c()
+Xn <- 3
+for(n in 1:7){
+  Xn <- 2*Xn + 3
+  vec.X.v1 <- c(vec.X.v1, Xn)
+}
+vec.X.v1
+#扣除第n項=[-n]
+vec.X.v1[-1]
+```
+#apply
+```{r}
+K<- matrix(rnorm(15), 5, 3)
+show(K)
+
+apply(K, 1, sum)
+```
+#lappy
+```{r}
+#此處使用apply是不可行的
+C <- list(a = 1:10, beta = exp(-3:3))
+lapply(C, FUN = mean)
+par(mfrow = c(1, 2))
+```
+# if sapply(x, f, simplify = FALSE, USE.NAMES =FALSE)
+```{r}
+C <- list(a = 1:10, beta = exp(-3:3))
+sapply(C, summary)
+```
+
+
